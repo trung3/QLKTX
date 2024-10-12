@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body >
+<aside class="main-sidebar" th:fragment ="aside_templates">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu tree" data-widget="tree">
+        <li class="header">Bảng điều khiển</li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-edit"></i> <span>Quản lý</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a th:href="@{/admin/user}"><i class="fa fa-circle-o"></i>Quản lý người dùng</a></li>
+            <li><a th:href="@{/admin/product}"><i class="fa fa-circle-o"></i>Quản lý sản phẩm</a></li>
+            <li><a th:href="@{/admin/category}"><i class="fa fa-circle-o"></i>Quản lý danh mục</a></li>
+            <li><a th:href="@{/admin/order}"><i class="fa fa-circle-o"></i>Quản lý hóa đơn</a></li>
+            <li><a th:href="@{/admin/contact}"><i class="fa fa-circle-o"></i>Quản lý liên hệ</a></li>
+          </ul>
+          
+          
+        </li>
+        
+        <li class="treeview menu-open" style="height: auto;">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Báo cáo</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: block;">
+            <li><a th:href="@{/admin/report/inventory}"><i class="fa fa-circle-o"></i>Tồn kho theo loại</a></li>
+            <li><a th:href="@{/admin/report/revenueByCustomer}"><i class="fa fa-circle-o"></i> Doanh thu theo khách hàng</a></li>
+            <li><a th:href="@{/admin/report/revenueByCategories}"><i class="fa fa-circle-o"></i> Doanh thu theo loại</a></li>
+             <li><a th:href="@{/admin/report/popularProduct}"><i class="fa fa-circle-o"></i>Sản phẩm bán chạy</a></li>
+             <li><a th:href="@{/admin/report/reportRevenueByProduct}"><i class="fa fa-circle-o"></i>Doanh thu theo sản phẩm</a></li>
+             <li><a th:href="@{/admin/report/reportRevenueByYears}"><i class="fa fa-circle-o"></i>Doanh thu theo năm</a></li>
+             <li><a th:href="@{/admin/report/reportRevenueByQuarter}"><i class="fa fa-circle-o"></i>Doanh thu theo quý</a></li>
+             <li><a th:href="@{/admin/report/reportRevenueByMonth}"><i class="fa fa-circle-o"></i>Doanh thu theo tháng</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+</body>
+</html>
