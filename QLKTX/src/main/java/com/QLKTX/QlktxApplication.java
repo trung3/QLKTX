@@ -9,6 +9,7 @@ public class QlktxApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(QlktxApplication.class, args);
 		
+		
 	}
 
 }
