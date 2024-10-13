@@ -9,6 +9,22 @@ public class index {
     
 	@RequestMapping("/index")
 	public String index(Model m) {
-		return "Admin/page/test";
+		return "index";
+	}
+	@RequestMapping("/addNV")
+	public String addNV(Model m) {
+		return "addNV";
+	}
+	@RequestMapping("/tableNV")
+	public String tableNV(Model m) {
+		return "tableNV";
+	}
+	@RequestMapping("/addSV")
+	public String addSV(Model m) {
+		return "addSV";
+	}
+	@RequestMapping("/tableSV")
+	public String tableSV(Model m) {
+		return "tableSV";
 	}
 }
