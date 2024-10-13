@@ -40,7 +40,7 @@ public class Lop implements Serializable{
 	public void setIdLop(int idLop) {
 		this.idLop = idLop;
 	}
-
+//
 	public String getNameLop() {
 		return nameLop;
 	}
