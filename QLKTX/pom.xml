@@ -64,7 +64,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,13 +75,13 @@
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
 
-=======
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 		
->>>>>>> branch 'main' of https://github.com/trung3/QLKTX.git
+
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
 			<artifactId>mssql-jdbc</artifactId>
@@ -93,7 +92,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-<<<<<<< HEAD
+
 
 
 		<dependency>
@@ -101,7 +100,7 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+	
 <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
@@ -145,14 +144,19 @@
     <scope>runtime</scope>
 </dependency>
 
+<dependency>
+    <groupId>org.hibernate.common</groupId>
+    <artifactId>hibernate-commons-annotations</artifactId>
+    <version>6.0.0.Final</version> <!-- hoặc phiên bản mới nhất -->
+</dependency>
 
-=======
+
 		<dependency>
     <groupId>javax.persistence</groupId>
     <artifactId>javax.persistence-api</artifactId>
     <version>2.2</version>
 </dependency>
->>>>>>> branch 'main' of https://github.com/trung3/QLKTX.git
+
 	</dependencies>
 
 	<build>
