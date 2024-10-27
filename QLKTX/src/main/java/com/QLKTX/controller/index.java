@@ -9,7 +9,7 @@ public class index {
     
 	@RequestMapping("/index")
 	public String index(Model m) {
-		return "index";
+		return "page/index";
 	}
 	@RequestMapping("/addNV")
 	public String addNV(Model m) {

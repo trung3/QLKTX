@@ -8,9 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -27,23 +25,22 @@ import lombok.Setter;
 public class NhanVien implements Serializable{
 
 	@Id
-	@Column(name = "maNV")
+	@Column(name = "Manv")
 	int idNV;
 	
-	@Column(name = "matKhau")
+	@Column(name = "Matkhau")
 	String matKhau;
 
-	@Column(name = "hoTen")
+	@Column(name = "Hoten")
 	String hoTen;
 	
-	@ManyToOne
-	@Column(name = "sdt")
+	@Column(name = "Sdt")
 	String sdt;
 	
-	@Column(name = "email")
+	@Column(name = "Email")
 	String email;
 	
-	@Column(name = "ghiChu")
+	@Column(name = "Ghichu")
 	String ghiChu;
 	
 	@Column(name = "trangThai")

@@ -3,15 +3,9 @@ package com.QLKTX.Entity;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,31 +13,31 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "sinhvien")
+@Table(name = "sinhvien",schema="qlktx")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SinhVien implements Serializable{
+public class sinhvien implements Serializable{
 
 	@Id
-	@Column(name = "maSV")
+	@Column(name = "Masv")
 	int idSV;
 	
-	@Column(name = "hoten")
+	@Column(name = "Hoten")
 	String nameSV;
 
-	@Column(name = "sdt")
+	@Column(name = "Sdt")
 	String sdtSV;
 	
 	@ManyToOne
-	@Column(name = "maLop")
-	String idLop;
+	@JoinColumn(name = "Malop")
+	lop maLop;
 	
-	@Column(name = "email")
+	@Column(name = "Email")
 	String email;
 	
-	@Column(name = "gioiTinh")
+	@Column(name = "GioiTinh")
 	boolean gioiTinh;
 
 	public int getIdSV() {
@@ -70,12 +64,14 @@ public class SinhVien implements Serializable{
 		this.sdtSV = sdtSV;
 	}
 
-	public String getIdLop() {
-		return idLop;
+
+
+	public lop getMaLop() {
+		return maLop;
 	}
 
-	public void setIdLop(String idLop) {
-		this.idLop = idLop;
+	public void setMaLop(lop maLop) {
+		this.maLop = maLop;
 	}
 
 	public String getEmail() {
