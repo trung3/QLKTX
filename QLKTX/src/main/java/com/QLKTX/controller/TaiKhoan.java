@@ -44,8 +44,8 @@ public class TaiKhoan {
 	public String addsv(Model m,@Validated @ModelAttribute("sv") sinhvien sv,
 			Errors errors){
 		 sinhvien.add(sv);
-		 List<lop> danhSachLop = lop.findAll(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
-		    m.addAttribute("danhSachLop", danhSachLop);
+//		 List<lop> danhSachLop = lop.findAll(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
+//		    m.addAttribute("danhSachLop", danhSachLop);
 		return "trang/addSV";
 	}
 }

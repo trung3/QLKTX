@@ -26,7 +26,7 @@ public class NhanVien implements Serializable{
 
 	@Id
 	@Column(name = "Manv")
-	int idNV;
+	String idNV;
 	
 	@Column(name = "Matkhau")
 	String matKhau;
