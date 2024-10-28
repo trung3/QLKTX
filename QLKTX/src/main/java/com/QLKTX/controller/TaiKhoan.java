@@ -6,9 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TaiKhoan {
-	@RequestMapping("/login")
-
-	public String index(Model m) {
-		return "page/aa";
+	@RequestMapping("/dangnhap")
+	public String index() {
+		return "trang/aa";
 	}
 }

@@ -17,7 +17,7 @@ public class index {
 	}
 	@RequestMapping("/tableNV")
 	public String tableNV(Model m) {
-		return "tableNV";
+		return "page/tableNV";
 	}
 	@RequestMapping("/addSV")
 	public String addSV(Model m) {

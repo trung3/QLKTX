@@ -22,7 +22,7 @@ public class sinhvien implements Serializable{
 
 	@Id
 	@Column(name = "Masv")
-	int idSV;
+		String idSV;
 	
 	@Column(name = "Hoten")
 	String nameSV;
