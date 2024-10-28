@@ -31,20 +31,20 @@ public class sinhvien implements Serializable{
 	String sdtSV;
 	
 	@ManyToOne
-	@JoinColumn(name = "Malop")
+	@JoinColumn(name = "Malop",nullable = false)
 	lop maLop;
 	
 	@Column(name = "Email")
 	String email;
 	
 	@Column(name = "GioiTinh")
-	boolean gioiTinh;
+	Boolean gioiTinh;
 
-	public int getIdSV() {
+	public String getIdSV() {
 		return idSV;
 	}
 
-	public void setIdSV(int idSV) {
+	public void setIdSV(String idSV) {
 		this.idSV = idSV;
 	}
 
@@ -82,11 +82,11 @@ public class sinhvien implements Serializable{
 		this.email = email;
 	}
 
-	public boolean isGioiTinh() {
+	public Boolean getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(boolean gioiTinh) {
+	public void setGioiTinh(Boolean gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 	

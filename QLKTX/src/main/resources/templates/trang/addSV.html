@@ -1,23 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns= "http://www.thymeleaf.org"
+  th:replace="~{/layout/layout::dynamic(~{::title},~{::body})}">
 
 <head>
-  <title>Thêm nhân viên | Quản trị Admin</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-  <!-- or -->
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  <!-- Font-icon css-->
-  <link rel="stylesheet" type="text/css"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+  
   <script>
 
     function readURL(input, thumbimage) {
@@ -132,58 +118,10 @@
     }
   </style>
   <!-- Navbar-->
-  <header class="app-header">
-    <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar"
-      aria-label="Hide Sidebar"></a>
-    <!-- Navbar Right Menu-->
-    <ul class="app-nav">
-
-
-      <!-- User Menu-->
-      <li><a class="app-nav__item" href="/index.html"><i class='bx bx-log-out bx-rotate-180'></i> </a>
-
-      </li>
-    </ul>
-  </header>
+  
   <!-- Sidebar menu-->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
-  <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/images/hay.jpg" width="50px"
-        alt="User Image">
-      <div>
-        <p class="app-sidebar__user-name"><b>Võ Trường</b></p>
-        <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
-      </div>
-    </div>
-    <hr>
-    <ul class="app-menu">
-      <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-cart-alt'></i>
-          <span class="app-menu__label">POS Bán Hàng</span></a></li>
-      <li><a class="app-menu__item " href="/index"><i class='app-menu__icon bx bx-tachometer'></i><span
-            class="app-menu__label">Bảng điều khiển</span></a></li>
-      <li><a class="app-menu__item active" href="/tableNV"><i class='app-menu__icon bx bx-id-card'></i>
-          <span class="app-menu__label">Quản lý nhân viên</span></a></li>
-      <li><a class="app-menu__item" href="/tableSV"><i class='app-menu__icon bx bx-user-voice'></i><span
-            class="app-menu__label">Quản lý sinh viên</span></a></li>
-      <li><a class="app-menu__item" href="table-data-product.html"><i
-            class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
-      </li>
-      <li><a class="app-menu__item" href="table-data-oder.html"><i class='app-menu__icon bx bx-task'></i><span
-            class="app-menu__label">Quản lý đơn hàng</span></a></li>
-      <li><a class="app-menu__item" href="table-data-banned.html"><i class='app-menu__icon bx bx-run'></i><span
-            class="app-menu__label">Quản lý nội bộ
-          </span></a></li>
-      <li><a class="app-menu__item" href="table-data-money.html"><i class='app-menu__icon bx bx-dollar'></i><span
-            class="app-menu__label">Bảng kê lương</span></a></li>
-      <li><a class="app-menu__item" href="quan-ly-bao-cao.html"><i
-            class='app-menu__icon bx bx-pie-chart-alt-2'></i><span class="app-menu__label">Báo cáo doanh thu</span></a>
-      </li>
-      <li><a class="app-menu__item" href="page-calendar.html"><i class='app-menu__icon bx bx-calendar-check'></i><span
-            class="app-menu__label">Lịch công tác </span></a></li>
-      <li><a class="app-menu__item" href="#"><i class='app-menu__icon bx bx-cog'></i><span class="app-menu__label">Cài
-            đặt hệ thống</span></a></li>
-    </ul>
-  </aside>
+
   <main class="app-content">
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb">
@@ -205,116 +143,45 @@
               </div>
 
             </div>
-            <form class="row">
+            <form class="row" action="/addSV" method="post" th:object="${sv}">
               <div class="form-group col-md-4">
-                <label class="control-label">ID nhân viên</label>
-                <input class="form-control" type="text">
+                <label class="control-label">Mã sinh viên</label>
+                <input th:field="*{idSV}" class="form-control" type="text">
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Họ và tên</label>
-                <input class="form-control" type="text" required>
+                <input th:field="*{nameSV}" class="form-control" type="text" required>
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Địa chỉ email</label>
-                <input class="form-control" type="text" required>
+                <input th:field="*{email}" class="form-control" type="text" required>
               </div>
-              <div class="form-group col-md-4">
-                <label class="control-label">Địa chỉ thường trú</label>
-                <input class="form-control" type="text" required>
-              </div>
+             
               <div class="form-group  col-md-4">
                 <label class="control-label">Số điện thoại</label>
-                <input class="form-control" type="number" required>
+                <input th:field="*{sdtSV}"class="form-control" type="text" required>
               </div>
-              <div class="form-group col-md-4">
-                <label class="control-label">Ngày sinh</label>
-                <input class="form-control" type="date">
+               <div class="form-group  col-md-4">
+                <select class="form-control" th:field="*{maLop}" required>
+            <option value="" disabled selected>-- Chọn lớp --</option>
+            <option th:each="lop : ${danhSachLop}" th:value="${lop.maLop}" th:text="${lop.tenLop}"></option>
+        </select>
               </div>
-              <div class="form-group  col-md-3">
-                <label class="control-label">Nơi sinh</label>
-                <input class="form-control" type="text" required>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Số CMND</label>
-                <input class="form-control" type="number" required>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Ngày cấp</label>
-                <input class="form-control" type="date" required>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Nơi cấp</label>
-                <input class="form-control" type="text" required>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Giới tính</label>
-                <select class="form-control" id="exampleSelect2" required>
-                  <option>-- Chọn giới tính --</option>
-                  <option>Nam</option>
-                  <option>Nữ</option>
-                </select>
-              </div>
-
-              <div class="form-group  col-md-3">
-                <label for="exampleSelect1" class="control-label">Chức vụ</label>
-                <select class="form-control" id="exampleSelect1">
-                  <option>-- Chọn chức vụ --</option>
-                  <option>Bán hàng</option>
-                  <option>Tư vấn</option>
-                  <option>Dịch vụ</option>
-                  <option>Thu Ngân</option>
-                  <option>Quản kho</option>
-                  <option>Bảo trì</option>
-                  <option>Kiểm hàng</option>
-                  <option>Bảo vệ</option>
-                  <option>Tạp vụ</option>
-                </select>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Bằng cấp</label>
-                <select class="form-control" id="exampleSelect3">
-                  <option>-- Chọn bằng cấp --</option>
-                  <option>Tốt nghiệp Đại Học</option>
-                  <option>Tốt nghiệp Cao Đẳng</option>
-                  <option>Tốt nghiệp Phổ Thông</option>
-                  <option>Chưa tốt nghiệp</option>
-                  <option>Không bằng cấp</option>
-                </select>
-              </div>
-              <div class="form-group col-md-3">
-                <label class="control-label">Tình trạng hôn nhân</label>
-                <select class="form-control" id="exampleSelect2">
-                  <option>-- Chọn tình trạng hôn nhân --</option>
-                  <option>Độc thân</option>
-                  <option>Đã kết hôn</option>
-                  <option>Góa</option>
-                  <option>Khác</option>
-                </select>
-              </div>
-
-              <div class="form-group col-md-12">
-                <label class="control-label">Ảnh 3x4 nhân viên</label>
-                <div id="myfileupload">
-                  <input type="file" id="uploadfile" name="ImageUpload" onchange="readURL(this);" />
-                </div>
-                <div id="thumbbox">
-                  <img height="300" width="300" alt="Thumb image" id="thumbimage" style="display: none" />
-                  <a class="removeimg" href="javascript:"></a>
-                </div>
-                <div id="boxchoice">
-                  <a href="javascript:" class="Choicefile"><i class='bx bx-upload'></i></a>
-                  <p style="clear:both"></p>
-                </div>
-
-              </div>
-
-
+              
+             <div class="form-group col-md-3">
+    <label class="control-label">Giới tính</label>
+    <select class="form-control" th:field="*{gioiTinh}" required>
+        <option value="" disabled selected>-- Chọn giới tính --</option>
+        <option value="true">Nam</option>
+        <option value="false">Nữ</option>
+    </select>
+</div>
 
           </div>
-          <button class="btn btn-save" type="button">Lưu lại</button>
+          <button class="btn btn-save" type="submit">Lưu lại</button>
           <a class="btn btn-cancel" href="/doc/table-data-table.html">Hủy bỏ</a>
         </div>
-
+</form>
   </main>
 
 

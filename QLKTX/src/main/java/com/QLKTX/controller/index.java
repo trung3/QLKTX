@@ -2,6 +2,7 @@ package com.QLKTX.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -9,22 +10,24 @@ public class index {
     
 	@RequestMapping("/index")
 	public String index(Model m) {
-		return "page/index";
+		return "trang/index";
 	}
 	@RequestMapping("/addNV")
 	public String addNV(Model m) {
-		return "addNV";
+		return "trang/addNV";
 	}
 	@RequestMapping("/tableNV")
 	public String tableNV(Model m) {
-		return "page/tableNV";
+		return "trang/tableNV";
 	}
-	@RequestMapping("/addSV")
-	public String addSV(Model m) {
-		return "addSV";
-	}
-	@RequestMapping("/tableSV")
-	public String tableSV(Model m) {
-		return "tableSV";
-	}
+//	@RequestMapping("/addSV")
+//	public String addSV(Model m) {
+//		return "trang/addSV";
+//	}
+//	@RequestMapping("/tableSV")
+//	public String tableSV(Model m) {
+//		return "trang/tableSV";
+//	}
+	
+	
 }

@@ -8,6 +8,6 @@ import com.QLKTX.Entity.sinhvien;
 
 
 public interface SinhVienRepository extends JpaRepository<sinhvien, String> {
-	@Query("SELECT o FROM users o WHERE o.Hoten=?1")
+	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1")
 	sinhvien findByName(sinhvien name);
 }
