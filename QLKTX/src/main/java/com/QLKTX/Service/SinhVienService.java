@@ -10,4 +10,5 @@ void add (sinhvien sv);
 sinhvien update(String mssv );
 Optional<sinhvien> findByMaSVService(String mssv);
 sinhvien findByName(sinhvien name);
+
 }

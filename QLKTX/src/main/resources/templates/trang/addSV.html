@@ -138,6 +138,7 @@
           <div class="tile-body">
             <div class="row element-button">
               <div class="col-sm-2">
+              <span style="color:red" th:text="${tb}"></span> 
                 <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><b><i
                       class="fas fa-folder-plus"></i> Tạo chức vụ mới</b></a>
               </div>
@@ -145,6 +146,7 @@
             </div>
             <form class="row" action="/addSV" method="post" th:object="${sv}">
               <div class="form-group col-md-4">
+              <i style="color:red"th:text="${ktTonTai}"></i>
                 <label class="control-label">Mã sinh viên</label>
                 <input th:field="*{idSV}" class="form-control" type="text">
               </div>
@@ -164,7 +166,7 @@
                <div class="form-group  col-md-4">
                 <select class="form-control" th:field="*{maLop}" required>
             <option value="" disabled selected>-- Chọn lớp --</option>
-            <option th:each="lop : ${danhSachLop}" th:value="${lop.maLop}" th:text="${lop.tenLop}"></option>
+            <option th:each="lop : ${danhSachLop}" th:value="${lop.maLop}" th:text="${lop.nameLop}"></option>
         </select>
               </div>
               
@@ -196,8 +198,10 @@
         <div class="modal-body">
           <div class="row">
             <div class="form-group  col-md-12">
+            
               <span class="thong-tin-thanh-toan">
                 <h5>Tạo chức vụ mới</h5>
+                
               </span>
             </div>
             <div class="form-group col-md-12">
@@ -206,6 +210,7 @@
             </div>
           </div>
           <BR>
+         
           <button class="btn btn-save" type="button">Lưu lại</button>
           <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
           <BR>

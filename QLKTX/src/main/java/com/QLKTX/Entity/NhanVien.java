@@ -46,11 +46,11 @@ public class NhanVien implements Serializable{
 	@Column(name = "trangThai")
 	boolean trangThai;
 
-	public int getIdNV() {
+	public String getIdNV() {
 		return idNV;
 	}
 
-	public void setIdNV(int idNV) {
+	public void setIdNV(String idNV) {
 		this.idNV = idNV;
 	}
 
