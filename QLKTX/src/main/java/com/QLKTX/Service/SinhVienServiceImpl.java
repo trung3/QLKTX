@@ -29,6 +29,16 @@ public class SinhVienServiceImpl implements SinhVienService {
 	}
 	
 	@Override
+	public sinhvien findBySdt(String sdt) {
+		// TODO Auto-generated method stub
+		return SinhVienRepository.findBySdt(sdt);
+	}
+	@Override
+	public sinhvien findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return SinhVienRepository.findByEmail(email);
+	}
+	@Override
 	public Optional<sinhvien> findByMaSVService(String mssv) {
 		// TODO Auto-generated method stub
 		return SinhVienRepository.findById(mssv);

@@ -125,8 +125,8 @@
   <main class="app-content">
     <div class="app-title">
       <ul class="app-breadcrumb breadcrumb">
-        <li class="breadcrumb-item">Danh sách nhân viên</li>
-        <li class="breadcrumb-item"><a href="#">Thêm nhân viên</a></li>
+        <li class="breadcrumb-item">Danh sách sinh viên</li>
+        <li class="breadcrumb-item"><a href="#">Thêm sinh viên</a></li>
       </ul>
     </div>
     <div class="row">
@@ -134,38 +134,41 @@
 
         <div class="tile">
 
-          <h3 class="tile-title">Tạo mới nhân viên</h3>
+          <h3 class="tile-title">Tạo mới sinh viên</h3>
           <div class="tile-body">
             <div class="row element-button">
               <div class="col-sm-2">
               <span style="color:red" th:text="${tb}"></span> 
-                <a class="btn btn-add btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><b><i
-                      class="fas fa-folder-plus"></i> Tạo chức vụ mới</b></a>
+                <a class="btn btn-add btn-sm" href="/TableSV"><b><i
+                      class="fas fa-folder-plus"></i>Danh sách sinh viên</b></a>
               </div>
 
             </div>
             <form class="row" action="/addSV" method="post" th:object="${sv}">
               <div class="form-group col-md-4">
-              <i style="color:red"th:text="${ktTonTai}"></i>
                 <label class="control-label">Mã sinh viên</label>
-                <input th:field="*{idSV}" class="form-control" type="text">
+                 <i style="color:red"th:text="${ktTonTai}"></i>
+                <input th:field="*{idSV}" class="form-control" type="text" required>
               </div>
               <div class="form-group col-md-4">
                 <label class="control-label">Họ và tên</label>
                 <input th:field="*{nameSV}" class="form-control" type="text" required>
               </div>
               <div class="form-group col-md-4">
-                <label class="control-label">Địa chỉ email</label>
+                <label class="control-label">Địa chỉ Email</label>
+                <i style="color:red"th:text="${ktEmail}"></i>
                 <input th:field="*{email}" class="form-control" type="text" required>
               </div>
              
               <div class="form-group  col-md-4">
                 <label class="control-label">Số điện thoại</label>
+                <i style="color:red"th:text="${ktPhone}"></i>
                 <input th:field="*{sdtSV}"class="form-control" type="text" required>
               </div>
                <div class="form-group  col-md-4">
+                <label class="control-label">Lớp</label>
                 <select class="form-control" th:field="*{maLop}" required>
-            <option value="" disabled selected>-- Chọn lớp --</option>
+            <option value=""  selected>-- Chọn lớp --</option>
             <option th:each="lop : ${danhSachLop}" th:value="${lop.maLop}" th:text="${lop.nameLop}"></option>
         </select>
               </div>
@@ -173,9 +176,9 @@
              <div class="form-group col-md-3">
     <label class="control-label">Giới tính</label>
     <select class="form-control" th:field="*{gioiTinh}" required>
-        <option value="" disabled selected>-- Chọn giới tính --</option>
-        <option value="true">Nam</option>
-        <option value="false">Nữ</option>
+        <option value="false" selected>-- Chọn giới tính --</option>
+           <option value="true">Nam</option>
+        <option value="false" >Nữ</option>
     </select>
 </div>
 

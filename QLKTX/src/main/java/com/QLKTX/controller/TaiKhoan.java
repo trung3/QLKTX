@@ -51,32 +51,51 @@ public class TaiKhoan {
 	@PostMapping("/addSV")
 	public String addsv(Model m,@Validated @ModelAttribute("sv") sinhvien sv,
 			Errors errors){
-		 Boolean check=false;
+		 Boolean check=true;
 		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
 		    m.addAttribute("danhSachLop", danhSachLop);
-		    if(errors.hasErrors()==false) {
-		   Optional<com.QLKTX.Entity.sinhvien> checkmssv= sinhvien.findByMaSVService(sv.getIdSV());
-		         if(!checkmssv.isEmpty()) {
+		    if(!errors.hasErrors()) {
+		   Optional<sinhvien> checkmssv= sinhvien.findByMaSVService(sv.getIdSV());
+		   
+		 //Kiểm tra mssv có tồn tại không?   
+		   if(!checkmssv.isEmpty()) {
 		        	 check =false;
 		        	 m.addAttribute("ktTonTai", "Mã số sinh viên đã tồn tại");
-		         }else {
-		        	 check=true;
 		         }
-		         if(check==true) {
+		//   Kiểm tra email có tồn tại không
+		   if(sinhvien.findByEmail(sv.getEmail())!=null) {
+			   m.addAttribute("ktEmail", " đã tồn tại");
+			   check=false;
+		   }
+		   //Kiểm tra sdt có tồn tại không
+		   if(sinhvien.findBySdt(sv.getSdtSV())!=null) {
+			   m.addAttribute("ktPhone", " đã tồn tại");
+			  
+			   check=false;
+		   }
+		         
+		         if(check) {
 		        	 sinhvien.add(sv);
-				    	m.addAttribute("tb","Đăng ký thành công");
+				    	m.addAttribute("tb","Thêm sinh viên thành công");
 		         }
 		    	
 		    }else {
-		    	m.addAttribute("tb","Đăng ký thất bại");
+		    	m.addAttribute("tb","Thêm sinh viên thất bại");
 		    }
 		return "trang/addSV";
 	}
-	@RequestMapping("/TableSV")
+	@GetMapping("/TableSV")
 	public String tablesv(Model m) {
 		Pageable pageable =PageRequest.of(0,5);
 		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
 		m.addAttribute("svPage",resultPage);
+		
+		sinhvien sv = new sinhvien();
+		sv.setGioiTinh(true);
+		
+		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
+		    m.addAttribute("danhSachLop", danhSachLop);
+		m.addAttribute("sv",sv);
 		return "trang/tableSV";
 	}
 }
