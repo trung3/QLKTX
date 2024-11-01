@@ -1,5 +1,6 @@
 package com.QLKTX.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,12 +85,11 @@ public class TaiKhoan {
 		    }
 		return "trang/addSV";
 	}
-	@GetMapping("/TableSV")
-	public String tablesv(Model m) {
+	@RequestMapping("/TableSV")
+	public String Updatetablesv(Model m) {
 		Pageable pageable =PageRequest.of(0,5);
 		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
 		m.addAttribute("svPage",resultPage);
-		
 		sinhvien sv = new sinhvien();
 		sv.setGioiTinh(true);
 		
@@ -97,5 +97,21 @@ public class TaiKhoan {
 		    m.addAttribute("danhSachLop", danhSachLop);
 		m.addAttribute("sv",sv);
 		return "trang/tableSV";
+	}
+	@RequestMapping("/update")
+	public String Updatetablesv(Model m,@RequestParam("id") String id) {
+		Pageable pageable =PageRequest.of(0,5);
+		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
+		m.addAttribute("svPage",resultPage);
+		sinhvien sv = new sinhvien();
+		sv.setGioiTinh(true);
+//		List<sinhvien> dsSV=sinhvienrepo.findAllById(id);
+		
+//			System.err.println(dsSV.toString());
+		
+		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
+		    m.addAttribute("danhSachLop", danhSachLop);
+		m.addAttribute("sv",sv);
+		return "trang/addSV";
 	}
 }

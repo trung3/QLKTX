@@ -87,10 +87,15 @@
                   <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i
                         class="fas fa-trash-alt"></i>
                     </button>
-                    <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                      data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
-                    </button>
-                    <a  th:href="@{|/TableSV?id=${sv.idSV}|}">X</a>
+                    
+						                  <a class="btn btn-primary btn-sm edit" 
+						   th:href="@{|/update?id=${sv.idSV}|}" 
+						   title="Sửa">
+						   <i class="fas fa-edit"></i>
+								</a>
+								
+							
+					         
                   </td>
                 </tr>
                 
@@ -301,6 +306,14 @@
     $("#show-emp").on("click", function () {
       $("#ModalUP").modal({ backdrop: false, keyboard: false })
     });
+    
+    
+
+function submitForm() {
+    document.getElementById('updateForm').submit(); // Gửi form
+}
+
+ 
   </script>
 </body>
 

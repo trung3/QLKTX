@@ -89,6 +89,12 @@ public class sinhvien implements Serializable{
 	public void setGioiTinh(Boolean gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
+
+	@Override
+	public String toString() {
+		return "sinhvien [idSV=" + idSV + ", nameSV=" + nameSV + ", sdtSV=" + sdtSV + ", maLop=" + maLop + ", email="
+				+ email + ", gioiTinh=" + gioiTinh + "]";
+	}
 	
 
 	
