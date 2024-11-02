@@ -32,10 +32,7 @@ public class TaiKhoan {
     LopServiceImpl lop;
 	@Autowired
 	SinhVienRepository sinhvienrepo;
-	@RequestMapping("/dangnhap")
-	public String index() {
-	     return "trang/aa";
-	}
+
 	
 	@GetMapping("/addSV")
 	public String addsv(Model m) {

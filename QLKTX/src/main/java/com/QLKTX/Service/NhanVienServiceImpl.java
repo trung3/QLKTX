@@ -1,5 +1,6 @@
 package com.QLKTX.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -34,5 +35,10 @@ public class NhanVienServiceImpl implements NhanVienService {
 	@Override
 	public NhanVien findByName(NhanVien name) {
 		return NhanVienRepo.findByName(name);
+	}
+	@Override
+	public List<NhanVien> findAll() {
+	
+		return NhanVienRepo.findAll();
 	}
 }
