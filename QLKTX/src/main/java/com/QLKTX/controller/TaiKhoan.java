@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 import com.QLKTX.Entity.lop;
 import com.QLKTX.Entity.sinhvien;
 import com.QLKTX.Repository.SinhVienRepository;
@@ -37,7 +38,7 @@ public class TaiKhoan {
 	     return "trang/aa";
 	}
 	
-	@GetMapping("/addSV")
+	@GetMapping("/admin/addSV")
 	public String addsv(Model m) {
 		sinhvien sv = new sinhvien();
 		sv.setGioiTinh(true);
@@ -49,7 +50,7 @@ public class TaiKhoan {
 		
 		return "trang/addSV";
 	}
-	@PostMapping("/addSV")
+	@PostMapping("/admin/addSV")
 	public String addsv(Model m,@Validated @ModelAttribute("sv") sinhvien sv,
 			Errors errors){
 		 Boolean check=true;
@@ -61,7 +62,7 @@ public class TaiKhoan {
 		 //Kiểm tra mssv có tồn tại không?   
 		   if(!checkmssv.isEmpty()) {
 		        	 check =false;
-		        	 m.addAttribute("ktTonTai", "Mã số sinh viên đã tồn tại");
+		        	 m.addAttribute("ktTonTai", " đã tồn tại");
 		         }
 		//   Kiểm tra email có tồn tại không
 		   if(sinhvien.findByEmail(sv.getEmail())!=null) {
@@ -85,7 +86,7 @@ public class TaiKhoan {
 		    }
 		return "trang/addSV";
 	}
-	@RequestMapping("/TableSV")
+	@RequestMapping("/admin/TableSV")
 	public String Updatetablesv(Model m) {
 		Pageable pageable =PageRequest.of(0,5);
 		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
@@ -98,20 +99,66 @@ public class TaiKhoan {
 		m.addAttribute("sv",sv);
 		return "trang/tableSV";
 	}
-	@RequestMapping("/update")
-	public String Updatetablesv(Model m,@RequestParam("id") String id) {
+	@GetMapping("/admin/update")
+	public String Updatetablesv1(Model m,@RequestParam("id") String id,
+			@Validated @ModelAttribute("sv") sinhvien sv, 
+			Errors errors) {
+		Boolean check=true;
 		Pageable pageable =PageRequest.of(0,5);
 		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
 		m.addAttribute("svPage",resultPage);
-		sinhvien sv = new sinhvien();
-		sv.setGioiTinh(true);
-//		List<sinhvien> dsSV=sinhvienrepo.findAllById(id);
+		Optional<sinhvien> checkmssv= sinhvien.findByMaSVService(id);
+		sinhvien sinhVien = checkmssv.get();
+		 
 		
-//			System.err.println(dsSV.toString());
+		 
+
+	        
+	          
+	            m.addAttribute("sv",sinhVien);
+	            // Thêm các thuộc tính khác nếu cần
+	        
 		
 		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
 		    m.addAttribute("danhSachLop", danhSachLop);
-		m.addAttribute("sv",sv);
+//		m.addAttribute("sv",sv);
+		return "trang/addSV";
+	}
+	@PostMapping("/admin/update")
+	public String Updatetablesv(Model m,@RequestParam("id") String id,
+			@Validated @ModelAttribute("sv") sinhvien sv, 
+			Errors errors) {
+		Boolean check=true;
+		Pageable pageable =PageRequest.of(0,5);
+		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
+		m.addAttribute("svPage",resultPage);
+		Optional<sinhvien> checkmssv= sinhvien.findByMaSVService(id);
+		sinhvien sinhVien = checkmssv.get();
+		 if(!errors.hasErrors()) {    	
+//			 sv.setIdSV(id);       	
+			 sinhvien.add(sv);
+					    	m.addAttribute("tb","Sửa sinh viên thành công");
+			         
+			    	
+			    }else {
+			    	m.addAttribute("tb","Sửa sinh viên thất bại");
+			    }
+		
+		 
+
+	        // Kiểm tra nếu có sinh viên
+	        
+	            
+
+	            // Lấy dữ liệu từng dòng
+	          
+	            m.addAttribute("sv",sinhVien);
+	            // Thêm các thuộc tính khác nếu cần
+	        
+		
+		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
+		    m.addAttribute("danhSachLop", danhSachLop);
+//		m.addAttribute("sv",sv);
 		return "trang/addSV";
 	}
 }
