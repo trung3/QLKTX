@@ -26,17 +26,14 @@ import com.QLKTX.Service.LopService;
 import com.QLKTX.Service.LopServiceImpl;
 import com.QLKTX.Service.SinhVienServiceImpl;
 @Controller
-public class TaiKhoan {
+public class sinhvienController {
 	@Autowired
 	SinhVienServiceImpl sinhvien;
 	@Autowired
     LopServiceImpl lop;
 	@Autowired
 	SinhVienRepository sinhvienrepo;
-	@RequestMapping("/dangnhap")
-	public String index() {
-	     return "trang/aa";
-	}
+	
 	
 	@GetMapping("/admin/addSV")
 	public String addsv(Model m) {
@@ -100,25 +97,17 @@ public class TaiKhoan {
 		return "trang/tableSV";
 	}
 	@GetMapping("/admin/update")
-	public String Updatetablesv1(Model m,@RequestParam("id") String id,
+	public String Updatetablesv1(Model m,@RequestParam("id") String id,@RequestParam("edit") Boolean edit,
 			@Validated @ModelAttribute("sv") sinhvien sv, 
 			Errors errors) {
-		Boolean check=true;
+		m.addAttribute("edit",edit);
 		Pageable pageable =PageRequest.of(0,5);
 		Page<sinhvien> resultPage= sinhvienrepo.findAll(pageable);
 		m.addAttribute("svPage",resultPage);
 		Optional<sinhvien> checkmssv= sinhvien.findByMaSVService(id);
 		sinhvien sinhVien = checkmssv.get();
-		 
-		
-		 
-
-	        
-	          
 	            m.addAttribute("sv",sinhVien);
 	            // Thêm các thuộc tính khác nếu cần
-	        
-		
 		 List<lop> danhSachLop = lop.findAllLop(); // Thay thế bằng phương thức hợp lệ để lấy danh sách lớp
 		    m.addAttribute("danhSachLop", danhSachLop);
 //		m.addAttribute("sv",sv);
@@ -135,11 +124,27 @@ public class TaiKhoan {
 		Optional<sinhvien> checkmssv= sinhvien.findByMaSVService(id);
 		sinhvien sinhVien = checkmssv.get();
 		 if(!errors.hasErrors()) {    	
-//			 sv.setIdSV(id);       	
-			 sinhvien.add(sv);
-					    	m.addAttribute("tb","Sửa sinh viên thành công");
-			         
-			    	
+       	  
+       	
+     	  if(sinhvien.findByEmail(sv.getEmail() )!= null) {
+     		 sinhvien ktEmailTonTai = sinhvien.findByMSSVAndEmailService(sv.getIdSV(),sv.getEmail());
+     		  if(ktEmailTonTai ==null) {
+     	    		  check =false;
+     	    		 m.addAttribute("ktEmail", " đã tồn tại");
+     	    	  }
+
+     	  }
+     	 if(sinhvien.findBySdt(sv.getSdtSV() )!= null) {
+     		sinhvien ktsdtTonTai = sinhvien.findByMSSVAndSdtService(sv.getIdSV(),sv.getSdtSV());
+     		 if(ktsdtTonTai==null) {
+				 check =false;
+				 m.addAttribute("ktPhone", " đã tồn tại");
+			 }
+     	 }
+     	      if(check) {
+     	    	 sinhvien.add(sv);
+			    	m.addAttribute("tb","Sửa sinh viên thành công");
+     	      }
 			    }else {
 			    	m.addAttribute("tb","Sửa sinh viên thất bại");
 			    }
