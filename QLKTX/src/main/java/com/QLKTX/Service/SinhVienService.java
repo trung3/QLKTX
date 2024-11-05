@@ -13,4 +13,7 @@ Optional<sinhvien> findByMaSVService(String mssv);
 sinhvien findByName(sinhvien name);
 sinhvien findByEmail(String email);
 sinhvien findBySdt(String sdt);
+sinhvien findByEmailService(String email);
+sinhvien findByMSSVAndEmailService(String id,String email);
+sinhvien findByMSSVAndSdtService(String id,String sdt);
 }

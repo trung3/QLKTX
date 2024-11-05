@@ -27,7 +27,7 @@
             <div class="row element-button">
               <div class="col-sm-2">
 
-                <a class="btn btn-add btn-sm" href="/addSV" title="Thêm"><i class="fas fa-plus"></i>
+                <a class="btn btn-add btn-sm" href="/admin/addSV" title="Thêm"><i class="fas fa-plus"></i>
                   Tạo mới sinh viên</a>
               </div>
               <div class="col-sm-2">
@@ -86,7 +86,7 @@
                   </div>
                   <td>
 						                  <a class="btn btn-primary btn-sm edit" 
-						   th:href="@{|/admin/update?id=${sv.idSV}|}" 
+						   th:href="@{|/admin/update?id=${sv.idSV}&edit=true|}" 
 						   title="Sửa">
 						   <i class="fas fa-edit"></i>
 								</a>

@@ -183,9 +183,17 @@
 </div>
 
           </div>
-          <button class="btn btn-save" type="submit">Lưu lại</button>
+          <div th:if="${edit} == true">
+          <button class="btn btn-save" type="submit" disabled>Lưu lại</button>
           <button th:formaction="@{|/admin/update?id=${sv.idSV}|}"class="btn btn-save" type="submit">Cập nhật</button>
-          <a class="btn btn-cancel" href="/doc/table-data-table.html">Hủy bỏ</a>
+          <a class="btn btn-cancel" href="/admin/TableSV">Hủy bỏ</a>
+          </div>
+          
+          <div th:unless="${edit} == true">
+          <button class="btn btn-save" type="submit">Lưu lại</button>
+          <button th:formaction="@{|/admin/update?id=${sv.idSV}|}"class="btn btn-save" type="submit" disabled>Cập nhật</button>
+          <a class="btn btn-cancel" href="/admin/TableSV">Hủy bỏ</a>
+          </div>
         </div>
 </form>
   </main>

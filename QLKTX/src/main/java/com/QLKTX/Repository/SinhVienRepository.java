@@ -10,8 +10,16 @@ import com.QLKTX.Entity.sinhvien;
 public interface SinhVienRepository extends JpaRepository<sinhvien, String> {
 	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1")
 	sinhvien findByName(sinhvien name);
+	
 	@Query("SELECT o FROM sinhvien o WHERE o.email=?1")
 	sinhvien findByEmail(String email);
+	
+	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1 AND o.email=?2")
+	sinhvien findByMSSVAndEmail(String id,String email);
+	
 	@Query("SELECT o FROM sinhvien o WHERE o.sdtSV=?1")
 	sinhvien findBySdt(String sdt);
+	
+	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1 AND o.sdtSV=?2")
+	sinhvien findByMSSVAndSdt(String id,String sdt);
 }

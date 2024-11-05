@@ -30,7 +30,7 @@
 
 
       <!-- User Menu-->
-      <li><a class="app-nav__item" href="/index"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+      <li><a class="app-nav__item" href="/logout"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
       </li>
     </ul>
@@ -38,13 +38,22 @@
   <!-- Sidebar menu-->
   <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
   <aside class="app-sidebar">
-    <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="/images/hay.jpg" width="50px"
+   
+     <div th:if="${session.loggedInUser != null}">
+     	 <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" 
+    src="/images/user.png" width="50px"
         alt="User Image">
       <div>
-        <p class="app-sidebar__user-name"><b>Võ Trường</b></p>
+        <p class="app-sidebar__user-name">
+        <span th:text="${session.loggedInUser.hoTen}">Người dùng</span></p>
         <p class="app-sidebar__user-designation">Chào mừng bạn trở lại</p>
       </div>
     </div>
+     
+     </div>
+    <div th:if="${session.loggedInUser == null}">
+            <p style="color: white;">Xin vui lòng <a style="color: white;"th:href="@{/login}">đăng nhập</a>.</p>
+        </div>
     <hr>
     <ul class="app-menu">
       <li><a class="app-menu__item haha" href="phan-mem-ban-hang.html"><i class='app-menu__icon bx bx-cart-alt'></i>
