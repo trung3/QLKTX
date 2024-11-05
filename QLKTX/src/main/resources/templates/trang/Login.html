@@ -31,7 +31,8 @@
                 <!--=====TIÊU ĐỀ======-->
                 <div class="login100-form validate-form">
                     <span class="login100-form-title">
-                        <b>ĐĂNG NHẬP HỆ THỐNG QUẢN LÝ KTX</b>
+                        <b>ĐĂNG NHẬP HỆ THỐNG QUẢN LÝ KTX</b><br>
+                         <span style="color:red" th:text="${tb}"></span> 
                     </span>
                     <!--=====FORM INPUT TÀI KHOẢN VÀ PASSWORD======-->
                     <form action="/login" method="post" th:object="${nv}">

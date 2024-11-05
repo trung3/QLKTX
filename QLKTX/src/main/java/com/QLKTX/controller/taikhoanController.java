@@ -2,6 +2,8 @@ package com.QLKTX.controller;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,11 @@ public class taikhoanController {
 
 	@Autowired
 	NhanVienServiceImpl nvmpl;
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+	}
 	@GetMapping("/login")
 	public String login(Model m) {
 	    NhanVien nv = new NhanVien();
@@ -29,7 +36,7 @@ public class taikhoanController {
 	}
 	@PostMapping("/login")
 	public String login2(Model m,@Validated @ModelAttribute("nv") NhanVien nv,
-			Errors errors) {
+			Errors errors,HttpSession session) {
 		// Kiểm tra lỗi xác thực
         if (errors.hasErrors()) {
             m.addAttribute("tb", "Đăng nhập thất bại do lỗi xác thực");
@@ -45,7 +52,9 @@ public class taikhoanController {
 
             // Kiểm tra mật khẩu
             if (getNV.getMatKhau().equals(nv.getMatKhau())) {
-                // Đăng nhập thành công
+                
+            	// Đăng nhập thành công
+                  session.setAttribute("loggedInUser",getNV);// Lưu đối tượng NhanVien vào session
                 return "redirect:/index"; // Chuyển hướng đến trang index
             } else {
                 // Mật khẩu không đúng
