@@ -1,5 +1,6 @@
 package com.QLKTX.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -17,8 +18,8 @@ public class SinhVienServiceImpl implements SinhVienService {
 	@Autowired 
 	SinhVienRepository SinhVienRepository;
 	@Override
-	public void add(sinhvien sv) {
-		SinhVienRepository.save(sv);
+	public sinhvien add(sinhvien sv) {
+		return SinhVienRepository.save(sv);
 	}
 	@Override
 	public sinhvien update(String mssv) {
@@ -43,6 +44,8 @@ public class SinhVienServiceImpl implements SinhVienService {
 		// TODO Auto-generated method stub
 		return SinhVienRepository.findById(mssv);
 	}
+	
+	
 	@Override
 	public sinhvien findByName(sinhvien name) {
 		// TODO Auto-generated method stub

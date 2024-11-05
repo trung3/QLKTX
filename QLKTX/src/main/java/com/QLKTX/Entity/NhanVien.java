@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,21 +32,25 @@ public class NhanVien implements Serializable{
 	@Column(name = "Manv")
 	String idNV;
 	
+	@Length(min = 6,message = "phải từ 6 kí tự trở lên")
 	@Column(name = "Matkhau")
 	String matKhau;
 
 	@Column(name = "Hoten")
 	String hoTen;
 	
+	@Length(min = 10,max=10,message = "chưa đúng")
 	@Column(name = "Sdt")
 	String sdt;
 	
+	@Email(message = "chưa đúng định dạng")
 	@Column(name = "Email")
 	String email;
 	
 	@Column(name = "Ghichu")
 	String ghiChu;
 	
+	@NotNull(message = "Bạn chưa chọn trạng thái")
 	@Column(name = "trangThai")
 	boolean trangThai;
 
@@ -101,6 +109,7 @@ public class NhanVien implements Serializable{
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
+
 
 	
 	

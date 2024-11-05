@@ -17,9 +17,10 @@ import com.QLKTX.Repository.NhanVienRepository;
 public class NhanVienServiceImpl implements NhanVienService {
 	@Autowired 
 	NhanVienRepository NhanVienRepo;
+
 	@Override
-	public void add(NhanVien nv) {
-		NhanVienRepo.save(nv);
+	public NhanVien add(NhanVien nv) {
+		return NhanVienRepo.save(nv);
 	}
 	@Override
 	public NhanVien update(String msnv) {
@@ -40,5 +41,15 @@ public class NhanVienServiceImpl implements NhanVienService {
 	public List<NhanVien> findAll() {
 	
 		return NhanVienRepo.findAll();
+	}
+	@Override
+	public NhanVien findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return NhanVienRepo.findByEmail(email);
+	}
+	@Override
+	public NhanVien findBySdt(String sdt) {
+		// TODO Auto-generated method stub
+		return NhanVienRepo.findBySdt(sdt);
 	}
 }

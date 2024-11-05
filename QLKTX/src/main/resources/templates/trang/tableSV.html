@@ -84,12 +84,9 @@
                   <div th:unless="${sv.gioiTinh}==true">
                       <td>Nữ</td>
                   </div>
-                  <td><button class="btn btn-primary btn-sm trash" type="button" title="Xóa" onclick="myFunction()"><i
-                        class="fas fa-trash-alt"></i>
-                    </button>
-                    
+                  <td>
 						                  <a class="btn btn-primary btn-sm edit" 
-						   th:href="@{|/update?id=${sv.idSV}|}" 
+						   th:href="@{|/admin/update?id=${sv.idSV}|}" 
 						   title="Sửa">
 						   <i class="fas fa-edit"></i>
 								</a>

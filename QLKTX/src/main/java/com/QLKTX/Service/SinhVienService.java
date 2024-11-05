@@ -1,12 +1,13 @@
 package com.QLKTX.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
 import com.QLKTX.Entity.sinhvien;
 
 public interface SinhVienService  {
-void add (sinhvien sv);
+sinhvien add (sinhvien sv);
 sinhvien update(String mssv );
 Optional<sinhvien> findByMaSVService(String mssv);
 sinhvien findByName(sinhvien name);
