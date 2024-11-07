@@ -11,6 +11,7 @@ public interface ThuePhongService {
 	ThuePhong update(Integer thuePhong );
 	List<ThuePhong> findAllThuePhong();
 	Optional<ThuePhong> findByMaThuePhongService(Integer maThue);
+	Optional<ThuePhong> findByMaSVService(String maSV);
 	ThuePhong findByMaPhong(ThuePhong maPhong);
 	ThuePhong findByMaSV(String maSV);
 }

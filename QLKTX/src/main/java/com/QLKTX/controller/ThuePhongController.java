@@ -57,17 +57,21 @@ SinhVienRepository sinhVienRepo;
 	public String addTP(Model m,@Validated @ModelAttribute("thuephong") ThuePhong thuephong,Errors errors) {
 		 Boolean check=true;
 //		 if(!errors.hasErrors()) {
-//ThuePhong checkmssv = thuePhongRepo.findByMaSV(thuephong.getMaSV().getIdSV());
+//Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaSVService(thuephong.getMaSV().getIdSV());
 //
-//		if(checkmssv != null) {
+//		if(!checkmssv.isEmpty()) {
 //        	 check =false;
 //        	 m.addAttribute("ktTonTai", " đã tồn tại");
 //         
 //
 //		} 
-		
+		 sinhvien sv = sinhVienRepo.findByMaSV(thuephong.getMaSV().getIdSV());
 		 Phong phong = phongRepo.findByMaPhong(thuephong.getMaPhong().getIdPhong());
 		 
+		  if(sv == null) {
+			   m.addAttribute("ktTonTai", " không tồn tại");
+			   check=false;
+		   }
 		   if(phong == null) {
 			   m.addAttribute("ktmaPhong", " không tồn tại");
 			   check=false;
@@ -83,11 +87,10 @@ SinhVienRepository sinhVienRepo;
 //				TT_ThuePhong ttthuePhong = new TT_ThuePhong();
 //				int daO = phong.getDaO()	+1;
 //				int conTrong = phong.getConTrong()-1;
-			sinhvien sv = sinhVienRepo.findByMaSV(thuephong.getMaSV().getIdSV());
-			Phong maPhong = phongRepo.findByMaPhong(thuephong.getMaPhong().getIdPhong());
+			
 			
 			thuephong.setMaSV(sv);
-			thuephong.setMaPhong(maPhong);
+			thuephong.setMaPhong(phong);
 						thuePhongSVI.add(thuephong);
 			m.addAttribute("tb","Thêm thuê phòng thành công");
 //			}}
@@ -106,6 +109,25 @@ SinhVienRepository sinhVienRepo;
 			Errors errors) {
 		Optional<ThuePhong> checkmstp= thuePhongSVI.findByMaThuePhongService(id);
 		ThuePhong tp = checkmstp.get();
+		
+
+	            m.addAttribute("thuephong",tp);
+	            return "trang/addTP";
+	}
+	@PostMapping("/admin/updateTP")
+	public String Update1(Model m,@RequestParam("id") Integer id,
+			@Validated @ModelAttribute("thuephong") ThuePhong thuephong, 
+			Errors errors) {
+		Optional<ThuePhong> checkmstp= thuePhongSVI.findByMaThuePhongService(id);
+		ThuePhong tp = checkmstp.get();
+		 if(!errors.hasErrors()) {    	     	
+			 thuePhongSVI.add(thuephong);
+					    	m.addAttribute("tb","Sửa thong tin thành công");
+			         
+			    	
+			    }else {
+			    	m.addAttribute("tb","Sửa thong tin thất bại");
+			    }
 		
 
 	            m.addAttribute("thuephong",tp);

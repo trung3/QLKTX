@@ -48,4 +48,9 @@ public class ThuePhongServiceImpl implements ThuePhongService {
 		// TODO Auto-generated method stub
 		return ThuePhongRepository.findByMaSV(maSV);
 	}
+	@Override
+	public Optional<ThuePhong> findByMaSVService(String maSV) {
+		// TODO Auto-generated method stub
+		return Optional.ofNullable(ThuePhongRepository.findByMaSV(maSV));
+	}
 }
