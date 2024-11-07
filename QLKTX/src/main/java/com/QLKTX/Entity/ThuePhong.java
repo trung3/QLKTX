@@ -30,7 +30,7 @@ public class ThuePhong implements Serializable{
 	@JoinColumn(name = "Maphong")
 	Phong maPhong;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "Masv")
 	sinhvien maSV;
 	

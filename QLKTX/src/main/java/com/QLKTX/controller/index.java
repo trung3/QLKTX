@@ -22,7 +22,7 @@ public class index {
 		return "trang/index";
 	}
 
-<<<<<<< HEAD
+
 //	@RequestMapping("/addSV")
 //	public String addSV(Model m) {
 //		return "trang/addSV";
@@ -31,8 +31,7 @@ public class index {
 //	public String tableSV(Model m) {
 //		return "trang/tableSV";
 //	}
-=======
->>>>>>> branch 'main' of https://github.com/trung3/QLKTX.git
+
 	
 	
 }

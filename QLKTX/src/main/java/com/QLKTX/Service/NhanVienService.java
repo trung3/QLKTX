@@ -14,4 +14,5 @@ List<NhanVien> findAll();
 NhanVien findByName(NhanVien name);
 NhanVien findByEmail(String email);
 NhanVien findBySdt(String sdt);
+NhanVien findByMaNV(String NV);
 }

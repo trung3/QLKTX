@@ -52,4 +52,9 @@ public class NhanVienServiceImpl implements NhanVienService {
 		// TODO Auto-generated method stub
 		return NhanVienRepo.findBySdt(sdt);
 	}
+	@Override
+	public NhanVien findByMaNV(String NV) {
+		// TODO Auto-generated method stub
+		return NhanVienRepo.findByMaNV(NV);
+	}
 }

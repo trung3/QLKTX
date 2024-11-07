@@ -43,4 +43,9 @@ public class ThuePhongServiceImpl implements ThuePhongService {
 		ThuePhongRepository.save(thue);
 		return thue;
 }
+	@Override
+	public ThuePhong findByMaSV(String maSV) {
+		// TODO Auto-generated method stub
+		return ThuePhongRepository.findByMaSV(maSV);
+	}
 }

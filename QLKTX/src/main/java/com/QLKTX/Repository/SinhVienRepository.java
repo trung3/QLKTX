@@ -22,4 +22,7 @@ public interface SinhVienRepository extends JpaRepository<sinhvien, String> {
 	
 	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1 AND o.sdtSV=?2")
 	sinhvien findByMSSVAndSdt(String id,String sdt);
+	
+	@Query("SELECT o FROM sinhvien o WHERE o.idSV=?1")
+	sinhvien findByMaSV(String SV);
 }

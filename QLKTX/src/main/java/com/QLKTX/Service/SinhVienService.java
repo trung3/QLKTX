@@ -16,4 +16,6 @@ sinhvien findBySdt(String sdt);
 sinhvien findByEmailService(String email);
 sinhvien findByMSSVAndEmailService(String id,String email);
 sinhvien findByMSSVAndSdtService(String id,String sdt);
+sinhvien findByMaSV(String maSV);
+
 }

@@ -10,4 +10,6 @@ import com.QLKTX.Entity.ThuePhong;
 public interface ThuePhongRepository extends JpaRepository<ThuePhong, Integer> {
 	@Query("SELECT o FROM ThuePhong o WHERE o.maPhong=?1")
 	ThuePhong findByMaPhong(ThuePhong maPhong);
+	@Query("SELECT o FROM ThuePhong o WHERE o.maSV=?1")
+	ThuePhong findByMaSV(String maSV);
 }

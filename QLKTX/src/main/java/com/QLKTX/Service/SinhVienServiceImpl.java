@@ -68,4 +68,9 @@ public class SinhVienServiceImpl implements SinhVienService {
 		// TODO Auto-generated method stub
 		return SinhVienRepository.findByName(name);
 	}
+	@Override
+	public sinhvien findByMaSV(String maSV) {
+		// TODO Auto-generated method stub
+		return SinhVienRepository.findByMaSV(maSV);
+	}
 }

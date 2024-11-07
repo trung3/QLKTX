@@ -64,8 +64,9 @@
                 <tr >
                   <th width="10"><input type="checkbox" id="all"></th>
                   <th>Mã thuê phòng</th>
-                  <th >Mã sinh viên</th>
+                 
                   <th>Mã phòng</th>
+                   <th >Mã sinh viên</th>
                   <th>Ngay bắt đầu</th>
                   <th>Ngày kết thúc</th>                  
                   <th >Giá thuê</th>
@@ -79,7 +80,8 @@
                   <td>[[${tp.maSV.idSV}]]</td>
                   <td>[[${tp.ngayBatDau}]]</td>
                   <td>[[${tp.ngayKetThuc}]]</td>
-                  <td>[[${tp.giaThue}]]</td>
+                  <td>[[${#numbers.formatDecimal(tp.giaThue,
+														0, 'POINT', 0, 'NONE')}]]₫</td>
           
                   
                   <td>       <a class="btn btn-primary btn-sm edit" 
