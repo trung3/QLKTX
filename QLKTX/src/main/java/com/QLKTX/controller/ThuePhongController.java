@@ -120,15 +120,15 @@ SinhVienRepository sinhVienRepo;
 			Errors errors) {
 		Optional<ThuePhong> checkmstp= thuePhongSVI.findByMaThuePhongService(id);
 		ThuePhong tp = checkmstp.get();
-		 if(!errors.hasErrors()) {    	     	
+//		 if(!errors.hasErrors()) {    	     	
 			 thuePhongSVI.add(thuephong);
 					    	m.addAttribute("tb","Sửa thong tin thành công");
 			         
 			    	
-			    }else {
-			    	m.addAttribute("tb","Sửa thong tin thất bại");
-			    }
-		
+//			    }else {
+//			    	m.addAttribute("tb","Sửa thong tin thất bại");
+//			    }
+//		
 
 	            m.addAttribute("thuephong",tp);
 	            return "trang/addTP";

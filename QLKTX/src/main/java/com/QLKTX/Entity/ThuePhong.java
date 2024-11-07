@@ -2,8 +2,7 @@ package com.QLKTX.Entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
-
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -36,13 +35,13 @@ public class ThuePhong implements Serializable{
 	sinhvien maSV;
 	
 	
-	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Ngaybatdau")
-	LocalDate  ngayBatDau ;
+	Date  ngayBatDau ;
 	
-
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "Ngayketthuc")
-	LocalDate ngayKetThuc;
+	Date ngayKetThuc;
 	
 	@Column(name = "Giathue")
 	float giaThue;
@@ -72,19 +71,21 @@ public class ThuePhong implements Serializable{
 	}
 
 
-	public LocalDate getNgayBatDau() {
+
+
+	public Date getNgayBatDau() {
 		return ngayBatDau;
 	}
 
-	public void setNgayBatDau(LocalDate ngayBatDau) {
+	public void setNgayBatDau(Date ngayBatDau) {
 		this.ngayBatDau = ngayBatDau;
 	}
 
-	public LocalDate getNgayKetThuc() {
+	public Date getNgayKetThuc() {
 		return ngayKetThuc;
 	}
 
-	public void setNgayKetThuc(LocalDate ngayKetThuc) {
+	public void setNgayKetThuc(Date ngayKetThuc) {
 		this.ngayKetThuc = ngayKetThuc;
 	}
 
