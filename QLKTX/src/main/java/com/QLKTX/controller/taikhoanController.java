@@ -39,7 +39,7 @@ public class taikhoanController {
 			Errors errors,HttpSession session) {
 		// Kiểm tra lỗi xác thực
         if (errors.hasErrors()) {
-            m.addAttribute("tb", "Đăng nhập thất bại do lỗi xác thực");
+            m.addAttribute("tb","Sai mật khẩu");
             return "trang/Login"; // Trả về trang login nếu có lỗi
         }
 
