@@ -37,7 +37,12 @@ public class ExSV {
 	            row.createCell(2).setCellValue(data.getSdtSV());
 	            row.createCell(3).setCellValue(data.getEmail());
 	            row.createCell(4).setCellValue(data.getMaLop().getMaLop());
-	            row.createCell(5).setCellValue(data.getGioiTinh());
+	            if(data.getGioiTinh()==true) {
+	            	 row.createCell(5).setCellValue("Nam");
+	            }else {
+	            	 row.createCell(5).setCellValue("Nữ");
+	            }
+	           
 	        }
 
 	        // Xuất dữ liệu ra ByteArrayOutputStream

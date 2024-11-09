@@ -25,7 +25,7 @@ public class EXController {
 
 	 @Autowired
 	 SinhVienRepository sv;
-	 @GetMapping("/export/excel")
+	 @GetMapping("/export/excelsv")
 	    public ResponseEntity<byte[]> exportExcel() throws IOException {
 	        // Lấy danh sách sinh viên từ cơ sở dữ liệu
 	        List<sinhvien> dataList = sv.findAll();
