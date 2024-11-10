@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 
@@ -63,11 +64,9 @@ public class SinhVienServiceImpl implements SinhVienService {
 		// TODO Auto-generated method stub
 		return SinhVienRepository.findByMSSVAndSdt(id, sdt);
 	}
-	@Override
-	public sinhvien findByName(sinhvien name) {
-		// TODO Auto-generated method stub
-		return SinhVienRepository.findByName(name);
-	}
+	
+	
+	
 	@Override
 	public sinhvien findByMaSV(String maSV) {
 		// TODO Auto-generated method stub
