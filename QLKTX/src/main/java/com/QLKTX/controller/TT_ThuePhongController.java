@@ -25,7 +25,7 @@ import com.QLKTX.Repository.NhanVienRepository;
 import com.QLKTX.Repository.PhongRepository;
 import com.QLKTX.Repository.SinhVienRepository;
 import com.QLKTX.Repository.ThuePhongRepository;
-import com.QLKTX.Service.PhongServiceImpl;
+
 import com.QLKTX.Service.TT_ThuePhongServiceImpl;
 import com.QLKTX.Service.ThuePhongServiceImpl;
 @Controller
