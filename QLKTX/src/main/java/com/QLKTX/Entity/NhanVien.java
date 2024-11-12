@@ -1,8 +1,6 @@
 package com.QLKTX.Entity;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
