@@ -33,8 +33,7 @@ public class TT_ThuePhongController {
 	ThuePhongRepository thuePhongRepo;
 	@Autowired
 	PhongRepository phongRepo;
-	@Autowired
-	NhanVienRepository nhanVienRepo;
+
 	@Autowired
 SinhVienRepository sinhVienRepo;
 	@Autowired 
