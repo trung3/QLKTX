@@ -53,4 +53,9 @@ public class ThuePhongServiceImpl implements ThuePhongService {
 		// TODO Auto-generated method stub
 		return Optional.ofNullable(ThuePhongRepository.findByMaSV(maSV));
 	}
+	@Override
+	public ThuePhong findByMThue(Integer ma) {
+		// TODO Auto-generated method stub
+		return ThuePhongRepository.findByMaThue(ma);
+	}
 }

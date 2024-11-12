@@ -34,14 +34,13 @@ public class ThuePhong implements Serializable{
 	@JoinColumn(name = "Masv")
 	sinhvien maSV;
 	
-	
-	@Temporal(TemporalType.TIMESTAMP)
+
 	@Column(name = "Ngaybatdau")
-	Date  ngayBatDau ;
+	LocalDate  ngayBatDau ;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+
 	@Column(name = "Ngayketthuc")
-	Date ngayKetThuc;
+	LocalDate ngayKetThuc;
 	
 	@Column(name = "Giathue")
 	float giaThue;
@@ -71,21 +70,19 @@ public class ThuePhong implements Serializable{
 	}
 
 
-
-
-	public Date getNgayBatDau() {
+	public LocalDate getNgayBatDau() {
 		return ngayBatDau;
 	}
 
-	public void setNgayBatDau(Date ngayBatDau) {
+	public void setNgayBatDau(LocalDate ngayBatDau) {
 		this.ngayBatDau = ngayBatDau;
 	}
 
-	public Date getNgayKetThuc() {
+	public LocalDate getNgayKetThuc() {
 		return ngayKetThuc;
 	}
 
-	public void setNgayKetThuc(Date ngayKetThuc) {
+	public void setNgayKetThuc(LocalDate ngayKetThuc) {
 		this.ngayKetThuc = ngayKetThuc;
 	}
 

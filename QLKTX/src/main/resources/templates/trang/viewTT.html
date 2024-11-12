@@ -142,48 +142,58 @@
               </div>
 
             </div>
-         <form class="row" action="/admin/addTP" method="post" th:object="${thuephong}">
+         <form class="row" action="/admin/updateTT" method="post" th:object="${thongtintp}">
   <div class="form-group col-md-4">
-    <label class="control-label">Mã sinh viên</label>
+    <label class="control-label">Mã Thuê Phòng</label>
   
     <i style="color:red" th:text="${ktTonTai}"></i>
-    <input th:field="*{maSV.idSV}" class="form-control" type="text" required>
+    <input th:field="*{maThuePhong.maThuePhong}" class="form-control" type="text" readonly>
   </div>
 
   <div class="form-group col-md-4">
     <label class="control-label">Mã phòng</label>
 
     <i style="color:red" th:text="${ktmaPhong}"></i>
-    <input th:field="*{maPhong.idPhong}" class="form-control" type="text" required>
+    <input th:field="*{maNV.idNV}" class="form-control" type="text" readonly>
   </div>
-       <div class="form-group  col-md-4">
-                <label for="exampleSelect1" class="control-label">Học kỳ</label>
-                  <i style="color:red" th:text="${kthocKy}"></i>
-                <select name="hocKy" class="form-control" id="exampleSelect1" required>
-                  <option  value="0"  selected>-- Học kỳ --</option>
-         <option th:value="1" th:text="'Kỳ 1'" th:selected="${selectedOption == 'Kỳ 1'}"></option>
-            <option th:value="2" th:text="'Kỳ 2'" th:selected="${selectedOption == 'Kỳ 2'}"></option>
-                  
-                  
-                </select>
-              </div>   
-
   <div class="form-group col-md-4">
-    
+    <label class="control-label">Ngày Thanh Toán</label>
+
+    <i style="color:red" th:text="${ktmaPhong}"></i>
+    <input th:field="*{ngayThanhToan}" class="form-control" type="text" readonly>
   </div>
- <div class="form-group col-md-4">
+  <div class="form-group col-md-4">
     <label class="control-label">Giá thuê</label>
-    <input th:field="*{giaThue}" class="form-control" type="text" required>
+
+    <i style="color:red" th:text="${ktmaPhong}"></i>
+    <input th:field="*{giaThue}" class="form-control" type="text" readonly>
   </div>
+               <div class="form-group col-md-4">
+    <label class="control-label">Thanh toán</label>
+    <select class="form-control" th:field="*{thanhToan}" required>
+   
+           <option value="true">Đã Thanh Toán</option>
+        <option value="false" >Chưa Thanh Toán</option>
+    </select>
+</div>
+              
+                     <div class="form-group col-md-4">
+    <label class="control-label">Trạng Thái</label>
+    <select class="form-control" th:field="*{trangThai}" readonly>
+           <option value="true">Hoạt động</option>
+        <option value="false" >Ngưng hoạt động</option>
+    </select>
+</div>    
+
   <div hidden class="form-group col-md-4">
-                <label class="control-label">Mã sinh viên</label>
+                <label class="control-label">Mã TT THUÊ</label>
             
-                <input th:field="*{maThuePhong}" class="form-control" type="text" required>
+                <input th:field="*{maTTThuePhong}" class="form-control" type="text" required>
               </div>
    </div>
 
-    <button class="btn btn-save" type="submit">Lưu lại</button>
-    <button th:formaction="@{|/admin/updateTP?id=${thuephong.maThuePhong}|}" class="btn btn-save" type="submit">Cập nhật</button>
+  
+    <button th:formaction="@{|/admin/updateTT?id=${thongtintp.maTTThuePhong}|}" class="btn btn-save" type="submit">Cập nhật</button>
     <a class="btn btn-cancel" href="/admin/TableTP">Hủy bỏ</a>
  
 </form>

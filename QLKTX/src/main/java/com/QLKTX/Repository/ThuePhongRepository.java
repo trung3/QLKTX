@@ -12,4 +12,6 @@ public interface ThuePhongRepository extends JpaRepository<ThuePhong, Integer> {
 	ThuePhong findByMaPhong(ThuePhong maPhong);
 	@Query("SELECT o FROM ThuePhong o WHERE o.maSV=?1")
 	ThuePhong findByMaSV(String maSV);
+	@Query("SELECT o FROM ThuePhong o WHERE o.maThuePhong=?1")
+	ThuePhong findByMaThue(Integer maSV);
 }

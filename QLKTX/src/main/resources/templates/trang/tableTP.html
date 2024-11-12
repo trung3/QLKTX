@@ -83,7 +83,12 @@
                   <td>[[${#numbers.formatDecimal(tp.giaThue,
 														0, 'POINT', 0, 'NONE')}]]₫</td>
           
-                  
+                  <td>       <a class="btn btn-primary btn-sm view" 
+						   th:href="@{|/admin/updateTT?id=${tp.maThuePhong}|}" 
+						   title="Xem thông in">
+						   <i class="fas fa-view"></i>
+								</a>
+                  </td>
                   <td>       <a class="btn btn-primary btn-sm edit" 
 						   th:href="@{|/admin/updateTP?id=${tp.maThuePhong}|}" 
 						   title="Sửa">
@@ -107,64 +112,7 @@
   <!--
   MODAL
 -->
-  <div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
-    data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-
-        <div class="modal-body">
-          <div class="row">
-            <div class="form-group  col-md-12">
-              <span class="thong-tin-thanh-toan">
-                <h5>Chỉnh sửa thông tin nhân viên cơ bản</h5>
-              </span>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-md-6">
-              <label class="control-label">Mã nhân viên</label>
-              <input class="form-control" type="text" required value="#CD2187" disabled>
-            </div>
-            <div class="form-group col-md-6">
-              <label class="control-label">Họ và tên</label>
-              <input class="form-control" type="text" required value="Võ Trường">
-            </div>
-            <div class="form-group  col-md-6">
-              <label class="control-label">Số điện thoại</label>
-              <input class="form-control" type="number" required value="09267312388">
-            </div>
-            <div class="form-group col-md-6">
-              <label class="control-label">Địa chỉ email</label>
-              <input class="form-control" type="text" required value="truong.vd2000@gmail.com">
-            </div>
-            <div class="form-group col-md-6">
-              <label class="control-label">Mật khẩu</label>
-              <input class="form-control" type="date" value="12345">
-            </div>
-            <div class="form-group  col-md-6">
-              <label for="exampleSelect1" class="control-label">Trạng thái</label>
-              <select class="form-control" id="exampleSelect1">
-                <option>Hoạt động</option>
-                <option>Không hoạt động</option>
-              
-              </select>
-            </div>
-          </div>
-          <BR>
-          <a href="#" style="    float: right;
-        font-weight: 600;
-        color: #ea0000;">Chỉnh sửa nâng cao</a>
-          <BR>
-          <BR>
-          <button class="btn btn-save" type="button">Lưu lại</button>
-          <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-          <BR>
-        </div>
-        <div class="modal-footer">
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!--
   MODAL
 -->

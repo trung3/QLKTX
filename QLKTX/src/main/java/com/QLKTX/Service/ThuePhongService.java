@@ -14,4 +14,5 @@ public interface ThuePhongService {
 	Optional<ThuePhong> findByMaSVService(String maSV);
 	ThuePhong findByMaPhong(ThuePhong maPhong);
 	ThuePhong findByMaSV(String maSV);
+	ThuePhong findByMThue(Integer ma);
 }
