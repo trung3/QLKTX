@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.QLKTX.Entity.TT_ThuePhong;
 
-import com.QLKTX.Repository.NhanVienRepository;
 import com.QLKTX.Repository.PhongRepository;
 import com.QLKTX.Repository.SinhVienRepository;
 import com.QLKTX.Repository.ThuePhongRepository;
