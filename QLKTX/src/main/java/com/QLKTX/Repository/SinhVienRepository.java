@@ -1,4 +1,6 @@
 package com.QLKTX.Repository;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,8 +10,8 @@ import com.QLKTX.Entity.sinhvien;
 
 
 public interface SinhVienRepository extends JpaRepository<sinhvien, String> {
-	@Query("SELECT o FROM sinhvien o WHERE o.nameSV=?1")
-	sinhvien findByName(sinhvien name);
+	@Query("SELECT o FROM sinhvien o WHERE o.idSV LIKE ?1")
+	Page<sinhvien> findByKeywords(String keywords,Pageable pgeable);
 	
 	@Query("SELECT o FROM sinhvien o WHERE o.email=?1")
 	sinhvien findByEmail(String email);

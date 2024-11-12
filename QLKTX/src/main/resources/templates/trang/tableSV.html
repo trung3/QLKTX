@@ -45,23 +45,31 @@
               </div>
 
               <div class="col-sm-2">
-                <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                <a class="btn btn-excel btn-sm" href="/export/excelsv" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
               </div>
               <div class="col-sm-2">
                 <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
                     class="fas fa-file-pdf"></i> Xuất PDF</a>
               </div>
-              <div class="col-sm-2">
-                <a class="btn btn-delete btn-sm" type="button" title="Xóa" onclick="myFunction(this)"><i
-                    class="fas fa-trash-alt"></i> Xóa tất cả </a>
-              </div>
+              
             </div>
+           
+            <form th:action="@{/admin/TableSV/search}" method="post"style=" display: flex;
+    justify-content: flex-end; /* Căn phải */
+    padding: 10px; /* Có thể điều chỉnh theo ý muốn */" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" 
+      name="keywords" th:value="${keywords}"
+      placeholder="Search" aria-label="Search">
+      <ul id="results"></ul>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    
             <table class="table table-hover table-bordered js-copytextarea" cellpadding="0" cellspacing="0" border="0"
               id="sampleTable">
               <thead>
                 <tr>
                   <th width="10"><input type="checkbox" id="all"></th>
-                  <th>ID nhân viên</th>
+                  <th>ID sinh viên</th>
                   <th width="150">Họ và tên</th>
                   <th width="20">Số điện thoại</th>
                   <th width="300">EMail</th>
@@ -100,6 +108,34 @@
 
               </tbody>
             </table>
+            <div class"row">
+            <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="sampleTable_info" role="status" aria-live="polite">
+            Hiện [[${svPage.number+1}]] đến [[${svPage.totalPages}]] của [[${svPage.totalElements}]] danh mục</div>
+            </div>
+            <div class="col-sm-12 col-md-12">
+            
+				<nav th:if="${svPage.totalPages >0}"
+				aria-label="Page navigation example">
+					  <ul class="pagination justify-content-end">
+					    <li th:class="${1== svPage.number + 1} ? 'page-item disabled ' : 'page-item'">
+					      <a  th:href="@{|/admin/TableSV?s=${svPage.size}&p =0|}" class="page-link">First</a>
+					    </li>
+					     <li class="page-item active"
+          th:each="pageNumber :${pageNumbers}" 
+          th:if="${svPage.totalPages > 1}"
+          th:class="${pageNumber == svPage.number + 1} ? 'page-item active' : 'page-item'">
+          <a  th:href="@{|/admin/TableSV?s=${svPage.size}&p=${pageNumber-1}|}" 
+          class="page-link"
+          th:text="${pageNumber}"></a>
+          </li>
+					     <li th:class="${svPage.totalPages == svPage.number + 1} ? 'page-item disabled ' : 'page-item'">
+            <a  th:href="@{|/admin/TableSV?s=${svPage.size}&p=${svPage.totalPages-1}|}" class="page-link">Last</a>
+          </li>
+					  </ul>
+					</nav>		     
+							</div>
+							</div>
           </div>
         </div>
       </div>
@@ -192,6 +228,23 @@
   <script type="text/javascript" src="js/plugins/dataTables.bootstrap.min.js"></script>
   <script type="text/javascript">$('#sampleTable').DataTable();</script>
   <script>
+    
+    async function performSearch() {
+            const query = document.getElementById('search').value;
+            if (query.length < 1) {
+                document.getElementById('results').innerHTML = '';
+                return; // Không tìm kiếm nếu không có từ khóa
+            }
+            const response = await fetch(`/search?name=${encodeURIComponent(query)}`);
+            const results = await response.json();
+            const resultsList = document.getElementById('results');
+            resultsList.innerHTML = '';
+            results.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.name;
+                resultsList.appendChild(li);
+            });
+        }
     function deleteRow(r) {
       var i = r.parentNode.parentNode.rowIndex;
       document.getElementById("myTable").deleteRow(i);

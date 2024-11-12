@@ -39,7 +39,7 @@ public class taikhoanController {
 			Errors errors,HttpSession session) {
 		// Kiểm tra lỗi xác thực
         if (errors.hasErrors()) {
-            m.addAttribute("tb", "Đăng nhập thất bại do lỗi xác thực");
+            m.addAttribute("tb","Sai mật khẩu");
             return "trang/Login"; // Trả về trang login nếu có lỗi
         }
 
@@ -52,10 +52,14 @@ public class taikhoanController {
 
             // Kiểm tra mật khẩu
             if (getNV.getMatKhau().equals(nv.getMatKhau())) {
-                
-            	// Đăng nhập thành công
-                  session.setAttribute("loggedInUser",getNV);// Lưu đối tượng NhanVien vào session
-                return "redirect:/index"; // Chuyển hướng đến trang index
+                if(getNV.isTrangThai()) {
+                	// Đăng nhập thành công
+                    session.setAttribute("loggedInUser",getNV);// Lưu đối tượng NhanVien vào session
+                  return "redirect:/index"; // Chuyển hướng đến trang index
+                }else {
+                	m.addAttribute("tb", "Tài khoản đã bị khóa");
+                }
+            	
             } else {
                 // Mật khẩu không đúng
                 m.addAttribute("tb", "Mật khẩu không đúng.");
