@@ -4,9 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 
+
 import com.QLKTX.Entity.NhanVien;
 
-public interface NhanVienService  {
+public interface NhanVienService   {
 NhanVien add (NhanVien nv);
 NhanVien update(String msnv );
 Optional<NhanVien> findByMaNVService(String msnv);

@@ -55,6 +55,8 @@ public class NhanVien implements Serializable{
 	@Column(name = "trangThai")
 	boolean trangThai;
 
+	
+	
 	public String getIdNV() {
 		return idNV;
 	}
@@ -111,6 +113,7 @@ public class NhanVien implements Serializable{
 		this.trangThai = trangThai;
 	}
 
+	
 
 	
 	
