@@ -98,7 +98,7 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 			   m.addAttribute("kthocKy", " chưa chọn");
 			   check=false;
 		   }
-		   //Kiểm tra sdt có tồn tại không
+
 		
 		if(check) {
 		int nam=	LocalDate.now().getYear();
