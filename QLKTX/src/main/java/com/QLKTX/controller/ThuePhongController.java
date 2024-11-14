@@ -54,7 +54,7 @@ SinhVienRepository sinhVienRepo;
 	@Autowired
 	HttpServletRequest req;
 	@Autowired
-	HttpSession session;
+	com.QLKTX.SessionService session;
 	@GetMapping("/admin/addTP")
 	public String addTP(Model m) {
 		ThuePhong thuePhong = new ThuePhong();
@@ -254,7 +254,8 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 		 
 	}
 	@RequestMapping("/admin/TableTP")
-	public String tableNV(Model m,	@RequestParam("p") Optional<Integer> p,@RequestParam("s") Optional<Integer> s) {
+	public String tableNV(Model m,	@RequestParam("p") Optional<Integer> p,
+			@RequestParam("s") Optional<Integer> s) {
 		int currentPage = p.orElse(0);
 		int pagesize = s.orElse(5);
 		Pageable pageable = PageRequest.of(currentPage, pagesize);
@@ -283,6 +284,45 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 		m.addAttribute("tp",tp);
 		
 		return "trang/tableTP";
+	}
+	@PostMapping("/admin/TableTP/search")
+	public String search(Model m,
+			@RequestParam("keywords") Optional<String> kw,
+			@RequestParam("p") Optional<Integer> p,
+			@RequestParam("s") Optional<Integer> s){
+			m.addAttribute("tp",new ThuePhong());
+		
+		String kwords = kw.orElse(session.getAttribute("keywords"));
+		session.setAttribute("keywords", kwords);
+		m.addAttribute("keywords", kwords);
+		int currentPage = p.orElse(0);
+		int pagesize = s.orElse(5);
+		Pageable pageable = PageRequest.of(currentPage, pagesize);
+		Page<ThuePhong> resultPage = thuePhongRepo.findByKeywords("%"+kwords+"%", pageable);
+		int totalPages = resultPage.getTotalPages();
+		if(totalPages >0) {
+			int start = Math.max(1,currentPage-2);
+			int end = Math.min(currentPage +2,totalPages);
+			
+			if(totalPages >5) {
+				if(end == totalPages) {
+					start = end -5;
+				}else if(start == 1) {
+					end = start +5;
+				}
+			}
+			List<Integer> pageNumber = IntStream.rangeClosed(start,end)
+					.boxed()
+					.collect(Collectors.toList());
+			
+			m.addAttribute("pageNumbers",pageNumber);
+		}
+		m.addAttribute("ThuePhongPage",resultPage);
+	
+		
+
+		return "trang/tableTP";
+		
 	}
 
 }
