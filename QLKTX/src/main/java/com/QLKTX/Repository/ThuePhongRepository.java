@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.QLKTX.Entity.ThuePhong;
+import com.QLKTX.Entity.sinhvien;
 
 
 public interface ThuePhongRepository extends JpaRepository<ThuePhong, Integer> {
@@ -14,4 +15,7 @@ public interface ThuePhongRepository extends JpaRepository<ThuePhong, Integer> {
 	ThuePhong findByMaSV(String maSV);
 	@Query("SELECT o FROM ThuePhong o WHERE o.maThuePhong=?1")
 	ThuePhong findByMaThue(Integer maSV);
+	
+	@Query("SELECT o FROM ThuePhong o WHERE o.maThuePhong LIKE ?1")
+	Page<ThuePhong> findByKeywords(int keywords,Pageable pgeable);
 }
