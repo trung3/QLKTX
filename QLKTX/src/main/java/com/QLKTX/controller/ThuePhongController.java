@@ -293,12 +293,13 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 			m.addAttribute("tp",new ThuePhong());
 		
 		String kwords = kw.orElse(session.getAttribute("keywords"));
+		int key = Integer.parseInt(kwords);
 		session.setAttribute("keywords", kwords);
 		m.addAttribute("keywords", kwords);
 		int currentPage = p.orElse(0);
 		int pagesize = s.orElse(5);
 		Pageable pageable = PageRequest.of(currentPage, pagesize);
-		Page<ThuePhong> resultPage = thuePhongRepo.findByKeywords("%"+kwords+"%", pageable);
+		Page<ThuePhong> resultPage = thuePhongRepo.findByKeywords(key, pageable);
 		int totalPages = resultPage.getTotalPages();
 		if(totalPages >0) {
 			int start = Math.max(1,currentPage-2);
