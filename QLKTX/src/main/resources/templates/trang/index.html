@@ -28,9 +28,9 @@
        <div class="col-md-6">
         <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
           <div class="info">
-            <h4>Tổng khách hàng</h4>
-            <p><b>56 khách hàng</b></p>
-            <p class="info-tong">Tổng số khách hàng được quản lý.</p>
+            <h4>Tổng sinh viên</h4>
+            <p><b th:text="${sv}"></b> sinh viên</p>
+            <p class="info-tong">Tổng số sinh viên được quản lý.</p>
           </div>
         </div>
       </div>
@@ -38,9 +38,9 @@
           <div class="col-md-6">
             <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
               <div class="info">
-                <h4>Tổng sản phẩm</h4>
-                <p><b>1850 sản phẩm</b></p>
-                <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
+                <h4>Tổng phòng</h4>
+                <p><b th:text="${phong}"></b> phòng</p>
+                <p class="info-tong">Tổng số phòng được quản lý.</p>
               </div>
             </div>
           </div>
@@ -48,9 +48,9 @@
           <div class="col-md-6">
             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
-                <h4>Tổng đơn hàng</h4>
-                <p><b>247 đơn hàng</b></p>
-                <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
+                <h4>Tổng thuê phòng</h4>
+                <p><b th:text="${tp}"></b> thuê phòng</p>
+                <p class="info-tong">Tổng số thuê phòng.</p>
               </div>
             </div>
           </div>
@@ -58,9 +58,9 @@
           <div class="col-md-6">
             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
               <div class="info">
-                <h4>Sắp hết hàng</h4>
-                <p><b>4 sản phẩm</b></p>
-                <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
+                <h4>Phòng còn trống</h4>
+                <p><b th:text="${ptrong}"></b> còn trống</p>
+                <p class="info-tong">Số phòng còn trống.</p>
               </div>
             </div>
           </div>
@@ -94,18 +94,36 @@
               <!-- / div trống-->
             </div>
            </div>
-          
+             <div class="search-bar">
+      <cennter>  <form action="/index" method="get">
+            <label for="roomNumber">Số phòng </label>
+            <input type="text" id="roomNumber" name="roomNumber"  placeholder="Enter Room Number">
+            <button type="submit">Search</button>
+        </form></cennter>
+    </div>
              <!-- col-12 -->
-      <!-- /        <div class="col-md-12">
+        <div class="col-md-12">
                 <div class="tile">
-                  <h3 class="tile-title">Khách hàng mới</h3>
-                <div>
-                  <table class="table table-hover">
+                  <h3 class="tile-title">Sinh viên đang ở</h3>
+                <div >
+                  <table border="1" class="table table-hover">
                     <thead>
-                      
+                           <tr>
+                <th>Mã sinh viên</th>
+                <th>Tên</th>
+                <th>Lớp</th>
+                <th>Giới tính</th>
+            </tr>
                     </thead>
                     <tbody>
+                        <tr th:each="student : ${students}">
                      
+                 <td th:text="${student.id}"></td>
+                <td th:text="${student.name}"></td>
+                <td th:text="${student.dob}"></td>
+                <td th:text="${student.gender}"></td>
+            </tr>  <!-- Gender -->
+                </tr>
                      
                      
                    
@@ -114,7 +132,7 @@
                 </div>
 
               </div>
-            </div>-->
+            </div>
              <!-- / col-12 -->
         </div>
       </div>

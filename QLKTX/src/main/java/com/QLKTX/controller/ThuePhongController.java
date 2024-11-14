@@ -182,6 +182,7 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 	        // Truyền selectedOption vào Model để sử dụng trong view
 	        m.addAttribute("selectedOption", selectedOption);  
 	            m.addAttribute("thuephong",tp);
+	            m.addAttribute("edit",true);
 	            return "trang/addTP";
 	}
 	@PostMapping("/admin/updateTP")

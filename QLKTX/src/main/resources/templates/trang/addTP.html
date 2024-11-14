@@ -181,11 +181,16 @@
                 <input th:field="*{maThuePhong}" class="form-control" type="text" required>
               </div>
    </div>
-
-    <button class="btn btn-save" type="submit">Lưu lại</button>
+   <div th:if="${edit} == true">
+    <button class="btn btn-save" type="submit" disabled>Lưu lại</button>
     <button th:formaction="@{|/admin/updateTP?id=${thuephong.maThuePhong}|}" class="btn btn-save" type="submit">Cập nhật</button>
     <a class="btn btn-cancel" href="/admin/TableTP">Hủy bỏ</a>
- 
+       </div>
+         <div th:unless="${edit} == true">
+         <button class="btn btn-save" type="submit">Lưu lại</button>
+    <button th:formaction="@{|/admin/updateTP?id=${thuephong.maThuePhong}|}" class="btn btn-save" type="submit" disabled>Cập nhật</button>
+    <a class="btn btn-cancel" href="/admin/TableTP">Hủy bỏ</a>
+             </div>
 </form>
 
   </main>
