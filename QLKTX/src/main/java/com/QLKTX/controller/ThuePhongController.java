@@ -306,7 +306,7 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 	    Pageable pageable = PageRequest.of(currentPage, pagesize);
 	    Page<ThuePhong> resultPage;
 
-	    // Kiểm tra từ khóa có hợp lệ không
+	    
 	    if (kwords == null || kwords.trim().isEmpty()) {
 	        resultPage = thuePhongRepo.findAll(pageable);
 	    } else {
