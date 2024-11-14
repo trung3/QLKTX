@@ -287,40 +287,62 @@ Optional<ThuePhong> checkmssv = thuePhongSVI.findByMaThuePhongService(thuephong.
 	}
 	@PostMapping("/admin/TableTP/search")
 	public String search(Model m,
-			@RequestParam("keywords") Optional<String> kw,
-			@RequestParam("p") Optional<Integer> p,
-			@RequestParam("s") Optional<Integer> s){
-			m.addAttribute("tp",new ThuePhong());
-		
-		String kwords = kw.orElse(session.getAttribute("keywords"));
-		int key = Integer.parseInt(kwords);
-		session.setAttribute("keywords", kwords);
-		m.addAttribute("keywords", kwords);
-		int currentPage = p.orElse(0);
-		int pagesize = s.orElse(5);
-		Pageable pageable = PageRequest.of(currentPage, pagesize);
-		Page<ThuePhong> resultPage = thuePhongRepo.findByKeywords(key, pageable);
-		int totalPages = resultPage.getTotalPages();
-		if(totalPages >0) {
-			int start = Math.max(1,currentPage-2);
-			int end = Math.min(currentPage +2,totalPages);
-			
-			if(totalPages >5) {
-				if(end == totalPages) {
-					start = end -5;
-				}else if(start == 1) {
-					end = start +5;
-				}
-			}
-			List<Integer> pageNumber = IntStream.rangeClosed(start,end)
-					.boxed()
-					.collect(Collectors.toList());
-			
-			m.addAttribute("pageNumbers",pageNumber);
-		}
-		m.addAttribute("ThuePhongPage",resultPage);
+	                     @RequestParam("keywords") Optional<String> kw,
+	                     @RequestParam("p") Optional<Integer> p,
+	                     @RequestParam("s") Optional<Integer> s,
+	                     HttpSession session) {
+	    m.addAttribute("tp", new ThuePhong());
+
+	    // Lấy từ khóa tìm kiếm, nếu không có thì lấy từ session
+	    String kwords = kw.orElse((String) session.getAttribute("keywords"));
+
+	    // Lưu từ khóa vào session
+	    session.setAttribute("keywords", kwords);
+	    m.addAttribute("keywords", kwords);
+
+	    // Xác định trang hiện tại và kích thước trang
+	    int currentPage = p.orElse(0);
+	    int pagesize = s.orElse(5);
+	    Pageable pageable = PageRequest.of(currentPage, pagesize);
+	    Page<ThuePhong> resultPage;
+
+	    // Kiểm tra từ khóa có hợp lệ không
+	    if (kwords == null || kwords.trim().isEmpty()) {
+	        resultPage = thuePhongRepo.findAll(pageable);
+	    } else {
+	        try {
+	            int key = Integer.parseInt(kwords);
+	            resultPage = thuePhongRepo.findByKeywords(key, pageable);
+	        } catch (NumberFormatException e) {
+	            // Nếu không thể chuyển đổi, tìm kiếm tất cả hoặc xử lý lỗi
+	            resultPage = thuePhongRepo.findAll(pageable);
+	            m.addAttribute("error", "Invalid search keyword: " + kwords);
+	        }
+	    }
+
+	    // Tính toán số trang
+	    int totalPages = resultPage.getTotalPages();
+	    if (totalPages > 0) {
+	        int start = Math.max(1, currentPage - 2);
+	        int end = Math.min(currentPage + 2, totalPages);
+
+	        if (totalPages > 5) {
+	            if (end == totalPages) {
+	                start = end - 5;
+	            } else if (start == 1) {
+	                end = start + 5;
+	            }
+	        }
+
+	        List<Integer> pageNumber = IntStream.rangeClosed(start, end)
+	                .boxed()
+	                .collect(Collectors.toList());
+
+	        m.addAttribute("pageNumbers", pageNumber);
+	    }
+
+	    m.addAttribute("ThuePhongPage", resultPage);
 	
-		
 
 		return "trang/tableTP";
 		
